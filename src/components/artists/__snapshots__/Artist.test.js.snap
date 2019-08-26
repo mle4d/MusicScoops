@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Artist component renders App 1`] = `
+<Fragment>
+  <Link
+    to="/releases/undefined/undefined"
+  >
+    <h3 />
+  </Link>
+</Fragment>
+`;

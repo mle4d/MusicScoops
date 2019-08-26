@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Song({ song, artist }) {
   return (
     <>
-      <Link to={`/lyrics/${artist}/${song}`}><h3>{songTitle}</h3></Link>
+      <Link to={`/lyrics/${artist}/${song}`}><h3>{song}</h3></Link>
     </>
   );
 }
