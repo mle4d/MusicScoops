@@ -22,3 +22,56 @@ export const searchArtists = (artist, page) => {
       };
     });
 };
+export const getArtistReleases = (artist, page) => {
+  return fetch(`https://musicbrainz.org/ws/2/release?artist=${artist}&fmt=json&limit=25&offset=${(page - 1) * 25}`)
+    .then(res => {
+      if(!res.ok) throw 'sorry try the google';
+
+      return res.json();
+    })
+    .then((data) => {
+      const allPages = data['release-count'];
+      const albums = data.releases.map(album => ({
+        releaseId: album.id,
+        releaseTitle: album.title,
+        coverArtCount: album['cover-art-archive'].front
+      }));
+      return {
+        albums,
+        allPages
+      };
+    });
+};
+
+export const getSongs = (release) => {
+  return fetch(`https://musicbrainz.org/ws/2/recording?release=${release}&fmt=json`)
+    .then(res => {
+      if(!res.ok) throw res.status;
+
+      return res.json();
+    })
+    .then(({ recordings }) => {
+      const songs = recordings.map(song => ({
+        songId: song.id,
+        song: song.title
+      }));
+      return {
+        songs
+      };
+    });
+};
+
+export const getLyrics = (artist, song) => {
+  return fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`)
+    .then(res => {
+      if(!res.ok) throw 'no lyrics here';
+
+      return res.json();
+    })
+    .then((data) => {
+      const lyrics = data.lyrics;
+      return {
+        lyrics
+      };
+    });
+};
