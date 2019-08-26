@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { searchArtists } from '../../services/musicAPI';
 import Search from '../search/search';
 import Artists from '../artists/Artists';
-//import Paging from '../../paging/Paging';
+import Pages from '../paging/pages';
 import PropTypes from 'prop-types';
 
 
