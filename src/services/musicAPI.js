@@ -22,7 +22,7 @@ export const searchArtists = (artist, page) => {
       };
     });
 };
-export const getArtistReleases = (artist, page) => {
+export const getReleases = (artist, page) => {
   return fetch(`https://musicbrainz.org/ws/2/release?artist=${artist}&fmt=json&limit=25&offset=${(page - 1) * 25}`)
     .then(res => {
       if(!res.ok) throw 'sorry try the google';
@@ -33,7 +33,7 @@ export const getArtistReleases = (artist, page) => {
       const allPages = data['release-count'];
       const albums = data.releases.map(album => ({
         releaseId: album.id,
-        releaseTitle: album.title,
+        release: album.title,
         coverArtCount: album['cover-art-archive'].front
       }));
       return {
