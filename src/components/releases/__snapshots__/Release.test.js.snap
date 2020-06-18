@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Release component renders App 1`] = `
+<div>
+  <Link
+    to="/songs/undefined/undefined/undefined"
+  >
+    <img />
+    <h3>
+       - 
+      unknown
+    </h3>
+  </Link>
+</div>
+`;

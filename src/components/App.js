@@ -1,6 +1,21 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ArtistSearch from '../components/containers/artistSearch';
+import Search from '../components/search/search';
+import release from '../components/containers/release';
+import song from '../components/containers/song';
+import lyrics from '../components/containers/lyrics';
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+      <>
+      <Router>
+        <Route exact path='/' component={Search} />
+        <Route exact path="/artist/:artist/:Id" component={ArtistSearch} />
+        <Route path='/releases/:artist/:artistId' component={release} />
+        <Route path='/songs/:artist/:releaseId/:release' component={song} />
+        <Route path='/;yrics/:artist/song' component={song} />
+      </Router>
+    </>
+  );
 }
   
